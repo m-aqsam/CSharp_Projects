@@ -44,7 +44,7 @@
             clock.BackColor = Color.Black;
             clock.Font = new Font("LCDMono2", 89.99999F, FontStyle.Bold, GraphicsUnit.Point, 0);
             clock.ForeColor = Color.Red;
-            clock.Location = new Point(15, 95);
+            clock.Location = new Point(15, 96);
             clock.Name = "clock";
             clock.Size = new Size(713, 134);
             clock.TabIndex = 0;
