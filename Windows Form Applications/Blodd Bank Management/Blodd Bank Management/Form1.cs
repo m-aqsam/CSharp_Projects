@@ -20,7 +20,7 @@ namespace Blodd_Bank_Management
         private void timer1_Tick(object sender, EventArgs e)
         {
             panel2.Width += 3;
-            if (panel2.Width >= 800)
+            if (panel2.Width >= 650)
             {
                 timer1.Stop();
                 

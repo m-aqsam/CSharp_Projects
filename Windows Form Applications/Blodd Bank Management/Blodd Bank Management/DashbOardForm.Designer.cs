@@ -194,7 +194,7 @@
             this.deleteDonorToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteDonorToolStripMenuItem.Image")));
             this.deleteDonorToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.deleteDonorToolStripMenuItem.Name = "deleteDonorToolStripMenuItem";
-            this.deleteDonorToolStripMenuItem.Size = new System.Drawing.Size(228, 30);
+            this.deleteDonorToolStripMenuItem.Size = new System.Drawing.Size(219, 32);
             this.deleteDonorToolStripMenuItem.Text = "Delete Donor";
             this.deleteDonorToolStripMenuItem.Click += new System.EventHandler(this.deleteDonorToolStripMenuItem_Click);
             // 

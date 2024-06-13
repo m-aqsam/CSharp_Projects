@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BloodBank.BLL;
+using System;
 using System.Windows.Forms;
 
 namespace Blodd_Bank_Management
 {
     public partial class LoginForm : Form
     {
+        private readonly BloodBankService _service;
+
         public LoginForm()
         {
             InitializeComponent();
+            _service = new BloodBankService();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -29,7 +26,10 @@ namespace Blodd_Bank_Management
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            if (usernameText.Text=="aqsam" && passwordText.Text=="12345")
+            string username = usernameText.Text;
+            string password = passwordText.Text;
+
+            if (_service.ValidateUser(username, password))
             {
                 DashboardForm dashbOardForm = new DashboardForm();
                 dashbOardForm.Show();
@@ -51,22 +51,13 @@ namespace Blodd_Bank_Management
             else
             {
                 btnHideShow.Text = "Show";
-                passwordText.PasswordChar= '*';
+                passwordText.PasswordChar = '*';
             }
         }
 
         private void kryptonCheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox.Checked==true)
-            {
-                loginButton.Enabled = true;
-            }
-            else
-            {
-                loginButton.Enabled = false;
-            }
+            loginButton.Enabled = checkBox.Checked;
         }
-
-        
     }
 }

@@ -16,7 +16,7 @@ namespace Blodd_Bank_Management
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DashboardForm());
+            Application.Run(new SplashForm());
         }
     }
 }

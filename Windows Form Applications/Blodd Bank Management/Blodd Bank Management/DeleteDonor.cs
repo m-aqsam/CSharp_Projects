@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using BloodBank.BLL;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Blodd_Bank_Management
 {
     public partial class DeleteDonor : Form
     {
-        Functions fn = new Functions();
+        private readonly BloodBankService _bloodBankService;
+
         public DeleteDonor()
         {
             InitializeComponent();
+            _bloodBankService = new BloodBankService();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -25,12 +22,12 @@ namespace Blodd_Bank_Management
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (txtDonorId.Text!="")
+            if (!string.IsNullOrEmpty(txtDonorId.Text))
             {
-                String query = "select * from newdonor where did = "+txtDonorId.Text+"";
-                DataSet ds =fn.getData(query);
+                String query = "select * from newdonor where did = " + txtDonorId.Text + "";
+                DataSet ds = _bloodBankService.GetData(query);
 
-                if (ds.Tables[0].Rows.Count!=0)
+                if (ds.Tables[0].Rows.Count != 0)
                 {
                     txtName.Text = ds.Tables[0].Rows[0]["dname"].ToString();
                     txtFather.Text = ds.Tables[0].Rows[0]["fname"].ToString();
@@ -50,16 +47,14 @@ namespace Blodd_Bank_Management
                     txtDonorId.Clear();
                 }
             }
-
-           
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are You Sure to Delete this Donor ?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)==DialogResult.OK)
+            if (MessageBox.Show("Are You Sure to Delete this Donor ?", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                String query = "delete from newdonor where did = "+txtDonorId.Text+"";
-                fn.setData(query);
+                String query = "delete from newdonor where did = " + txtDonorId.Text + "";
+                _bloodBankService.SetData(query);
                 txtDonorId.Clear();
             }
         }

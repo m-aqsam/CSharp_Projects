@@ -66,6 +66,8 @@
     <Compile Include="AllDonorDetails.Designer.cs">
       <DependentUpon>AllDonorDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="BLL\BloodBankService.cs" />
+    <Compile Include="DAL\DatabaseHelper.cs" />
     <Compile Include="DashbOardForm.cs">
       <SubType>Form</SubType>
     </Compile>

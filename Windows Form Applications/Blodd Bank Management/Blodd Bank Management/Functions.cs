@@ -41,7 +41,7 @@ namespace Blodd_Bank_Management
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conn;
             conn.Open();
-            cmd.CommandText= query;
+            cmd.CommandText= query;    
             cmd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Data Processed Succesfully");

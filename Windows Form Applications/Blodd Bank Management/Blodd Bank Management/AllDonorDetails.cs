@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using BloodBank.BLL;
+using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Blodd_Bank_Management
 {
     public partial class AllDonorDetails : Form
     {
-        Functions fn = new Functions();
+        private readonly BloodBankService _bloodBankService;
+
         public AllDonorDetails()
         {
             InitializeComponent();
+            _bloodBankService = new BloodBankService();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -26,9 +24,8 @@ namespace Blodd_Bank_Management
         private void AllDonorDetails_Load(object sender, EventArgs e)
         {
             String query = "select * from newdonor";
-            DataSet ds = fn.getData(query);
+            DataSet ds = _bloodBankService.GetData(query);
             dataGridView1.DataSource = ds.Tables[0];
-
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)

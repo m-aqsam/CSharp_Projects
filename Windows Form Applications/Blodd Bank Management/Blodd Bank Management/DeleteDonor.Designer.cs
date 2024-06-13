@@ -338,7 +338,7 @@
             this.btnDelete.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.btnDelete.Size = new System.Drawing.Size(101, 37);
             this.btnDelete.TabIndex = 74;
-            this.btnDelete.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Values.Image")));
+            this.btnDelete.Values.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Values.Image")));
             this.btnDelete.Values.Text = "Delete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -387,6 +387,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.kryptonSeparator1);
             this.Controls.Add(this.labelDeleteDonor);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DeleteDonor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

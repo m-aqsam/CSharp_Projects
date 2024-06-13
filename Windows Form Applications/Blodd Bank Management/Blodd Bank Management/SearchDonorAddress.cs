@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using BloodBank.BLL;
+using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Blodd_Bank_Management
 {
     public partial class SearchDonorAddress : Form
     {
-        Functions fn = new Functions();
+        private readonly BloodBankService _bloodBankService;
+
         public SearchDonorAddress()
         {
             InitializeComponent();
+            _bloodBankService = new BloodBankService();
         }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -25,24 +24,23 @@ namespace Blodd_Bank_Management
         private void SearchDonorAddress_Load(object sender, EventArgs e)
         {
             String query = "select * from newdonor";
-            DataSet ds = fn.getData(query);
+            DataSet ds = _bloodBankService.GetData(query);
             dataGridView1.DataSource = ds.Tables[0];
         }
 
         private void txtAddress_TextChanged(object sender, EventArgs e)
         {
-            if (txtAddress.Text!="")
+            if (txtAddress.Text != "")
             {
                 String query = "select * from newdonor where city like '" + txtAddress.Text + "%'or daddress like '" + txtAddress.Text + "%' ";
-                DataSet ds = fn.getData(query);
+                DataSet ds = _bloodBankService.GetData(query);
                 dataGridView1.DataSource = ds.Tables[0];
             }
-
             else
             {
                 String query = "select * from newdonor";
-                DataSet ds = fn.getData(query);
-                dataGridView1.DataSource= ds.Tables[0];
+                DataSet ds = _bloodBankService.GetData(query);
+                dataGridView1.DataSource = ds.Tables[0];
             }
         }
 
